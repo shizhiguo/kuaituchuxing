@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <div id="main" style="width: 1900px;height:800px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var city_list={{ city_list | safe }}
+        var user_count_list={{ user_count_list | safe}}
+        var option = {
+            title: {
+                text: '用户信息展示'
+            },
+            tooltip: {},
+            legend: {
+                data:['用户数目']
+            },
+            xAxis: {
+                data: city_list
+            },
+            yAxis: {},
+            series: [{
+                name: '用户数目',
+                type: 'bar',
+                data: user_count_list
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+
+{% endblock %}
