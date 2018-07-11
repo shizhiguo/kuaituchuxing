@@ -21,11 +21,8 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^user/', include('user.urls')),
+    url(r'^^', include('user.urls')),
 ]
 
-urlpatterns += [
-    url(r'^$', RedirectView.as_view(url='/user/', permanent=True)),
-]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
